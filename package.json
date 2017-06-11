@@ -1,0 +1,52 @@
+{
+  "name": "carried-both-sides",
+  "version": "1.0.0",
+  "description": "Website for Carried on Both Sides Exhibition",
+  "main": "./bin/webpack.js",
+  "scripts": {
+    "hugo": "hugo",
+    "hugo:watch": "hugo --watch",
+    "webpack": "./bin/webpack.js -p",
+    "webpack-server": "./bin/webpack-server.js -d",
+    "build": "npm run hugo && npm run webpack",
+    "watch": "npm run hugo:watch & npm run webpack-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/blerchin/carried-both-sides.git"
+  },
+  "author": "Ben Lerchin <ben@lerchin.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blerchin/carried-both-sides/issues"
+  },
+  "homepage": "https://github.com/blerchin/carried-both-sides#readme",
+  "dependencies": {
+    "autoprefixer": "7.1.1",
+    "babel-core": "6.25.0",
+    "babel-loader": "7.0.0",
+    "babel-preset-es2015": "6.24.1",
+    "css-loader": "0.28.4",
+    "entry-loader": "0.2.0",
+    "extricate-loader": "1.0.0",
+    "file-loader": "0.11.2",
+    "glob": "7.1.2",
+    "html-loader": "git+https://github.com/blerchin/html-loader.git",
+    "image-webpack-loader": "3.3.1",
+    "jimp": "0.2.28",
+    "jsdom": "11.0.0",
+    "node-sass": "^4.5.3",
+    "postcss-easysprites": "0.1.8",
+    "postcss-loader": "2.0.5",
+    "responsive-loader": "git+https://github.com/blerchin/responsive-loader.git",
+    "sass-loader": "6.0.5",
+    "sharp-image-loader": "0.1.0-alpha.1",
+    "uncss": "0.14.1",
+    "uncss-webpack-plugin": "0.1.1",
+    "webpack": "2.6.1",
+    "webpack-dev-server": "2.4.5"
+  },
+  "engines": {
+    "node": ">=6.x"
+  }
+}
