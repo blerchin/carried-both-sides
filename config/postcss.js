@@ -1,13 +1,11 @@
-'use strict';
-
 // Package modules.
-const autoprefixer = require('autoprefixer');
-const easySprite = require('postcss-easysprites');
+import autoprefixer from "autoprefixer";
+import easySprite from "postcss-easysprites";
 
 // Exports.
 module.exports = {
   plugins: () => [
-    easySprite({ spritePath: '.tmp/' }),
+    easySprite({spritePath: ".tmp/"}),
     autoprefixer
   ]
 };
