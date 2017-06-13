@@ -1,12 +1,16 @@
 import gulp from "gulp";
 import cp from "child_process";
 import gutil from "gulp-util";
+import BrowserSync from "browser-sync";
 import webpack from "webpack";
 import WebpackDevServer from "webpack-dev-server";
+import webpackDevMiddleware from "webpack-dev-middleware";
 import webpackConfig from "./webpack.conf";
 
 const hugoBin = "hugo";
 const defaultArgs = ["-d", "../.tmp", "-s", "site", "-v"];
+
+const browserSync = BrowserSync.create();
 
 
 gulp.task("hugo", (cb) => buildSite(cb));
@@ -22,24 +26,23 @@ gulp.task("webpack", ["hugo"], (cb) => {
 });
 
 gulp.task("webpack-watch", ["hugo"], (cb) => {
-  const config = Object.assign({
-    watch: true
-  }, webpackConfig);
-  const compiler = webpack(config);
-  new WebpackDevServer(compiler, {
+  const compiler = webpack(webpackConfig);
+  const webpackMiddleware = webpackDevMiddleware(compiler, {
+    publicPath: "/",
     stats: {
       colors: true,
-      progress: true
+    },
+    reporter: () => {
+      browserSync.reload();
     }
-  }).listen(3000, "localhost", (err) => {
-    if (err) throw new gutil.PluginError("webpack-dev-server", err);
-    // Server listening
-    /*
-    gutil.log("[webpack]", stats.toString({
-      colors: true,
-      progress: true
-    }));
-    */
+  });
+  browserSync.init({
+    server: {
+      baseDir: "./dist",
+      middleware: [
+        webpackMiddleware
+      ]
+    }
   });
 });
 
