@@ -1,4 +1,5 @@
 import webpack from "webpack";
+import glob from "glob";
 import path from "path";
 import postCSS from "./config/postcss";
 
@@ -14,7 +15,7 @@ export default {
           {
             loader: "html-loader",
             options: {
-              attrs: ["img:src", "link:href", "script:src"],
+              attrs: ["img:src", "script:src", "link:href"],
               interpolate: "require"
             }
           }
@@ -29,7 +30,6 @@ export default {
       {
         test: /\.(jpe?g|png|gif|tiff)$/i,
         loaders: [
-          "file-loader?name=img/[hash].[ext]",
           {
             loader: "image-webpack-loader",
             options: {
@@ -42,11 +42,11 @@ export default {
       {
         test: /.(css|sass|scss)$/i,
         use: [
-          "file-loader?name=css/[name].[hash:4].css",
+          "file-loader?name=css/[hash].css",
           "extricate-loader?resolve=\\.js$",
           "css-loader",
           {loader: "postcss-loader", options: postCSS},
-          "sass-loader?outputStyle=nested"
+          "sass-loader"
         ]
       },
       {test: /\.json$/, loader: "json-loader"},
@@ -55,21 +55,28 @@ export default {
         exclude: /node_modules/,
         loaders: [
           "entry-loader?name=js/[name].js",
-          {
-            loader: "babel-loader",
-            options: {
-              cacheDirectory: true
-            }
-          }
+          "babel-loader"
         ],
       }
     ]
+  },
+  entry: function() {
+    return glob.sync("*.html", {
+      absolute: true, // Receive absolute paths for matched files.
+      cwd: this.context, // The current working directory in which to search.
+      matchBase: true, // Perform a basename-only match.
+      nodir: true, // Do not match directories, only files.
+      nosort: true // Don't sort the results.
+    });
+  },
+  output: {
+    path: path.join(__dirname, "./dist")
   },
   plugins: [
     new webpack.ProvidePlugin({
       "fetch": "imports-loader?this=>global!exports?global.fetch!whatwg-fetch"
     }),
-    new webpack.EnvironmentPlugin({NODE_ENV: "development"})
+    new webpack.HotModuleReplacementPlugin()
   ],
   resolve: {
     modules: [
