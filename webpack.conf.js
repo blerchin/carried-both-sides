@@ -7,6 +7,7 @@ import cssNano from "./config/cssnano";
 export default function(devMode = false) {
   return {
     context: path.join(__dirname, ".tmp"),
+    devtool: devMode ? "source-map" : false,
     module: {
       rules: [
         {
@@ -47,11 +48,9 @@ export default function(devMode = false) {
             "file-loader?name=[hash].css",
             "extricate-loader?resolve=\\.js$",
             {loader: "css-loader", options: cssNano},
-            {loader: "postcss-loader",
-              options: Object.assign({sourceMap: devMode}, postCSS)
-            },
+            {loader: "postcss-loader", options: postCSS},
             "resolve-url-loader",
-            {loader: "sass-loader", options: {sourceMap: devMode}}
+            {loader: "sass-loader"}
           ]
         },
         {test: /\.json$/, loader: "json-loader"},
