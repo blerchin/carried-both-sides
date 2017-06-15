@@ -3,7 +3,6 @@ import cp from "child_process";
 import gutil from "gulp-util";
 import BrowserSync from "browser-sync";
 import webpack from "webpack";
-import WebpackDevServer from "webpack-dev-server";
 import webpackDevMiddleware from "webpack-dev-middleware";
 import webpackConfig from "./webpack.conf";
 
@@ -19,8 +18,12 @@ gulp.task("hugo-preview", (cb) => buildSite(cb, ["--buildDrafts", "--buildFuture
 gulp.task("build", ["hugo", "webpack"]);
 
 gulp.task("webpack", ["hugo"], (cb) => {
-  webpack(webpackConfig, (err) => {
+  webpack(webpackConfig, (err, stats) => {
     if (err) throw new gutil.PluginError("webpack", err);
+    gutil.log("[webpack]", stats.toString({
+      colors: true,
+      progress: true
+    }));
     cb();
   });
 });

@@ -24,7 +24,7 @@ export default {
       {
         test: /\.((eot)|(woff)|(woff2)|(ttf)|(svg))(\?v=\d+\.\d+\.\d+)?$/,
         loaders: [
-          "file-loader?name=img/[hash].[ext]"
+          "file-loader?name=[hash].[ext]"
         ]
       },
       {
@@ -42,10 +42,11 @@ export default {
       {
         test: /.(css|sass|scss)$/i,
         use: [
-          "file-loader?name=css/[hash].css",
+          "file-loader?name=[hash].css",
           "extricate-loader?resolve=\\.js$",
           "css-loader",
           {loader: "postcss-loader", options: postCSS},
+          "resolve-url-loader",
           "sass-loader"
         ]
       },
@@ -54,7 +55,7 @@ export default {
         test: /\.js?$/,
         exclude: /node_modules/,
         loaders: [
-          "entry-loader?name=js/[name].js",
+          "entry-loader?name=[hash].js",
           "babel-loader"
         ],
       }

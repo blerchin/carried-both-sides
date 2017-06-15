@@ -1,4 +1,6 @@
-@import "imports/reset.scss";
+@import "~foundation-sites/assets/foundation";
+@import "imports/reset";
+@import "typography";
 
 h1.red {
   color: red;
