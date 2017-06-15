@@ -18,7 +18,7 @@ gulp.task("hugo-preview", (cb) => buildSite(cb, ["--buildDrafts", "--buildFuture
 gulp.task("build", ["hugo", "webpack"]);
 
 gulp.task("webpack", ["hugo"], (cb) => {
-  webpack(webpackConfig, (err, stats) => {
+  webpack(webpackConfig(), (err, stats) => {
     if (err) throw new gutil.PluginError("webpack", err);
     gutil.log("[webpack]", stats.toString({
       colors: true,
@@ -29,21 +29,33 @@ gulp.task("webpack", ["hugo"], (cb) => {
 });
 
 gulp.task("webpack-watch", ["hugo"], (cb) => {
-  const compiler = webpack(webpackConfig);
+  const compiler = webpack(webpackConfig(true));
+  function reporter(evt) {
+    const statsOptions = {
+      colors: true,
+      progress: true
+    };
+    if (evt.state) {
+      if (evt.stats.hasErrors()) {
+        gutil.log("[webpack]", "Failed to compile.");
+      } else if (evt.stats.hasWarnings()) {
+        gutil.log("[webpack]", "Compiled with warnings.");
+      }
+      gutil.log("[webpack]", evt.stats.toString(statsOptions));
+      browserSync.reload();
+    } else {
+      gutil.log("[webpack]", "Compiling...");
+    }
+  }
   const webpackMiddleware = webpackDevMiddleware(compiler, {
     publicPath: "/",
-    stats: {
-      colors: true,
-    },
-    reporter: () => {
-      browserSync.reload();
-    }
+    reporter: reporter
   });
   browserSync.init({
     server: {
       baseDir: "./dist",
       middleware: [
-        webpackMiddleware
+        webpackMiddleware,
       ]
     }
   });

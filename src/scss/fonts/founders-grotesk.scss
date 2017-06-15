@@ -1,0 +1,18 @@
+@mixin fontdef($Path, $FileName, $Version) {
+  src:  url('#{$Path}/#{$FileName}.eot?v=#{$Version}');
+  src:  url('#{$Path}/#{$FileName}.eot?#iefix&v=#{$Version}') format('embedded-opentype'),
+        url('#{$Path}/#{$FileName}.woff2?v=#{$Version}') format('woff2'),
+        url('#{$Path}/#{$FileName}.woff?v=#{$Version}') format('woff')
+}
+
+$foundersPath: "~fonts/founders-grotesk" !default;
+$foundersVersion: "1.0.0" !default;
+
+/* BEGIN Light */
+@font-face {
+  font-family: 'Founders Grotesk';
+  @include fontdef($foundersPath, "FoundersGroteskWeb-Light", $foundersVersion);
+  font-weight: 300;
+  font-style: normal;
+}
+/* END Light */
