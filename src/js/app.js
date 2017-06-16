@@ -1,47 +1,27 @@
 import SunCalc from "suncalc";
-
-//const DEBUG_STATE = "night";
-const DEBUG_STATE = null;
-let player = null;
-const VIDEO_DIMS = [1280, 720];
-function initYtApi() {
-  const tag = document.createElement("script");
-  tag.src = "https://www.youtube.com/player_api";
-  var firstScriptTag = document.getElementsByTagName("script")[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-  // Replace the 'ytplayer' element with an <iframe> and
-  // YouTube player after the API code downloads.
-  function ready(e) {
-    sizeIframe();
-    player = e.target;
-    e.target.playVideo();
-    e.target.setVolume(0);
-  }
-  window.onYouTubePlayerAPIReady = function() {
-    new YT.Player("ytplayer", { //eslint-disable-line no-undef
-      height: VIDEO_DIMS[0],
-      events: {
-        onReady: ready
-      },
-      playerVars: {
-        controls: 0,
-        modestbranding: 1,
-        loop: 1
-      },
-      width: VIDEO_DIMS[1],
-      videoId: "aAWyRlX3tcQ"
-    });
-  };
+function getParams() {
+  var query = window.location.search.substr(1);
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
 }
+
+const DEBUG_STATE = getParams().time;
+const VIDEO_DIMS = [1280, 720];
+const player = document.querySelector(".video-wrap video");
+player.volume = 0;
+
 function sizeIframe() {
-  const el = document.getElementById("ytplayer");
+  const el = player;
   const ratio = VIDEO_DIMS[0] / VIDEO_DIMS[1];
   const ph = el.parentNode.offsetHeight;
   const pw = el.parentNode.offsetWidth;
   let w = pw;
   let h = (w / ratio);
-  if (pw < ph) {
+  if (pw / ph < ratio) {
     h = ph;
     w = (h * ratio);
   }
@@ -51,9 +31,9 @@ function sizeIframe() {
 function onTimeChanged(isDay) {
   if (!isDay) {
     sizeIframe();
-    player && player.playVideo();
+    player && player.play();
   } else {
-    player && player.stopVideo();
+    player && player.pause();
   }
 }
 let times = null;
@@ -93,4 +73,3 @@ setInterval(function() {
 }, 60 * 1000);
 window.addEventListener("applyTime", () => applyTime(isDay()), {passive: true});
 window.addEventListener("resize", sizeIframe);
-initYtApi();

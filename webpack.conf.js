@@ -19,7 +19,7 @@ export default function(devMode = false) {
             {
               loader: "html-loader",
               options: {
-                attrs: ["img:src", "script:src", "link:href"],
+                attrs: ["img:src", "video:src", "script:src", "link:href"],
                 interpolate: "require"
               }
             }
@@ -30,6 +30,10 @@ export default function(devMode = false) {
           loaders: [
             "file-loader?name=[hash].[ext]"
           ]
+        },
+        {
+          test: /\.mp4$/,
+          loaders: "file-loader?name=[hash].[ext]"
         },
         {
           test: /\.gif$/,

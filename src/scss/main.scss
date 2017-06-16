@@ -24,6 +24,7 @@ $barHeight: 57px;
   padding: 12px;
   position: fixed;
   width: 100%;
+  z-index: 10;
   .bottom-bar-center {
     display: inline-block;
   }
