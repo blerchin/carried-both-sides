@@ -4,55 +4,104 @@
 @import "colors";
 @import "typography";
 
-$barHeight: 57px;
+$barHeight: 80px;
+$barPadding: $barHeight/2 - 18px;
 
 .top-bar {
+  background: transparent;
   display: flex;
   height: $barHeight;
   justify-content: center;
-  padding: 12px;
+  padding: $barPadding;
+  position: fixed;
+  top: 0;
   width: 100%;
   .top-bar-center {
     display: inline-block;
   }
 }
 .bottom-bar {
+  background: transparent;
   bottom: 0;
   display: flex;
-  max-height: $barHeight;
   justify-content: center;
-  padding: 12px;
+  padding: $barPadding;
   position: fixed;
   width: 100%;
-  z-index: 10;
   .bottom-bar-center {
     display: inline-block;
   }
 }
 .home--wrap {
-  height: calc(100vh - 2 * #{$barHeight});
-  margin: 0px $barHeight;
+  height: 100vh;
   overflow: hidden;
+  transition: background 5s ease-in-out;
+  background: white;
+  &[data-time=night] {
+    background: $soft-black;
+  }
 }
 .ampersand-wrap {
   align-items: center;
   display: flex;
-  height: 100%;
+  height: 100vh;
   justify-content: center;
+  padding: $barHeight;
 }
 .video-wrap {
+  height: 100vh;
+  overflow: hidden;
+  padding: $barHeight;
+  position: relative;
+  width: 100vw;
+}
+.video-container {
   align-items: center;
   display: flex;
   height: 100%;
-  width: 100%;
   justify-content: center;
-  iframe {
-    flex-shrink: 0;
-  }
+  overflow: hidden;
+  width: 100%;
 }
 [data-time=day] .hide--day {
   display: none;
 }
 [data-time=night] .hide--night {
   display:none
+}
+#contact-overlay {
+  align-items: center;
+  background: inherit;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  opacity: 0;
+  padding: $barHeight;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  transition: opacity 2000ms ease-in-out;
+  &.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+  [data-close] {
+    background-image: url("~img/btn--close.svg");
+    background-position: center;
+    background-size: contain;
+    height: 48px;
+    right: $barHeight;
+    position: absolute;
+    top: $barHeight;
+    width: 48px;
+    &:hover {
+      border-bottom: 0px;
+      text-decoration: none;
+    }
+  }
+  .info {
+    text-align: center;
+  }
 }

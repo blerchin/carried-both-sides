@@ -1,9 +1,14 @@
 @import "fonts/founders-grotesk";
 
-body, h1, h2, h3, h4, h5, h6, a {
+body, h1, h2, h3, h4, h5, h6, a, p {
   font-family: "Founders Grotesk", sans-serif;
   font-weight: 300;
   font-size: 22px;
+  letter-spacing: .05em;
+  line-height: 27px;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 27px;
 }
 a:hover {
   font-weight: 300;

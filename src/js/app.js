@@ -9,10 +9,12 @@ function getParams() {
   return result;
 }
 
+/******* Day/Night Logic *******/
 const DEBUG_STATE = getParams().time;
 const VIDEO_DIMS = [1280, 720];
 const player = document.querySelector(".video-wrap video");
 player.volume = 0;
+player.loop = true;
 
 function sizeIframe() {
   const el = player;
@@ -73,3 +75,15 @@ setInterval(function() {
 }, 60 * 1000);
 window.addEventListener("applyTime", () => applyTime(isDay()), {passive: true});
 window.addEventListener("resize", sizeIframe);
+
+/************ Contact Overlay ************/
+const toggle = document.querySelector("[data-toggle]");
+toggle.addEventListener("click", (e) => {
+  e.preventDefault();
+  document.getElementById(toggle.dataset.toggle).classList.add("open");
+});
+const close = document.querySelector("a[data-close=parent]");
+close.addEventListener("click", (e) => {
+  e.preventDefault();
+  close.parentNode.classList.remove("open");
+});

@@ -7,3 +7,9 @@
 .top--0 {
   top: 0;
 }
+.dot-divider {
+  letter-spacing: .1em;
+  &:before {
+    content: "....................................................";
+  }
+}
