@@ -5,6 +5,7 @@ import postCSS from "./config/postcss";
 import cssNano from "./config/cssnano";
 
 export default function(devMode = false) {
+  const optimizePlugins = devMode ? [] : [new webpack.optimize.UglifyJsPlugin()];
   return {
     context: path.join(__dirname, ".tmp"),
     devtool: false,
@@ -50,7 +51,7 @@ export default function(devMode = false) {
           use: [
             "file-loader?name=[hash].css",
             "extricate-loader?resolve=\\.js$",
-            {loader: "css-loader", options: cssNano},
+            {loader: "css-loader", options: Object.assign({minimize: devMode}, cssNano)},
             {loader: "postcss-loader", options: Object.assign({sourceMap: false}, postCSS)},
             "resolve-url-loader",
             {loader: "sass-loader", options: {sourceMap: false}}
@@ -82,7 +83,8 @@ export default function(devMode = false) {
     plugins: [
       new webpack.ProvidePlugin({
         "fetch": "imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch"
-      })
+      }),
+      ...optimizePlugins
     ],
     resolve: {
       modules: [
