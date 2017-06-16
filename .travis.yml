@@ -15,8 +15,6 @@ before_install:
 script:
   - npm run lint
   - npm run build
-before_deploy:
-  - git add dist
 deploy:
   provider: pages
   skip_cleanup: true
