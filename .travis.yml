@@ -10,8 +10,8 @@ addons:
     packages:
       - g++-4.8
 before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get install -y hugo
+  - wget https://github.com/spf13/hugo/releases/download/v0.20.7/hugo_0.20.7_Linux-64bit.deb
+  - sudo dpkg -i hugo_0.20.7_Linux-64bit.deb
 script:
   - npm run lint
   - npm run build
