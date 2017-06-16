@@ -9,6 +9,9 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y hugo
 script:
   - npm run lint
   - npm run build
@@ -16,5 +19,6 @@ deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
+  target_branch: gh-pages
   on:
-    branch: gh-pages
+    branch: master
