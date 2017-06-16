@@ -51,6 +51,7 @@
     "sharp-image-loader": "0.1.0-alpha.1",
     "string-replace-loader": "1.2.0",
     "style-loader": "0.18.2",
+    "suncalc": "1.8.0",
     "url-loader": "^0.5.7",
     "webpack": "^2.6.0",
     "webpack-dev-middleware": "1.10.2",

@@ -40,9 +40,10 @@ gulp.task("webpack-watch", ["hugo"], (cb) => {
         gutil.log("[webpack]", "Failed to compile.");
       } else if (evt.stats.hasWarnings()) {
         gutil.log("[webpack]", "Compiled with warnings.");
+      } else {
+        gutil.log("[webpack]", evt.stats.toString(statsOptions));
+        browserSync.reload();
       }
-      gutil.log("[webpack]", evt.stats.toString(statsOptions));
-      browserSync.reload();
     } else {
       gutil.log("[webpack]", "Compiling...");
     }

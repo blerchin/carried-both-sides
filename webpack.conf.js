@@ -7,7 +7,7 @@ import cssNano from "./config/cssnano";
 export default function(devMode = false) {
   return {
     context: path.join(__dirname, ".tmp"),
-    devtool: devMode ? "source-map" : false,
+    devtool: false,
     module: {
       rules: [
         {
@@ -31,6 +31,10 @@ export default function(devMode = false) {
           ]
         },
         {
+          test: /\.gif$/,
+          loaders: "file-loader?name=[hash].[ext]"
+        },
+        {
           test: /\.(jpe?g|png|gif|tiff)$/i,
           loaders: [
             {
@@ -38,8 +42,7 @@ export default function(devMode = false) {
               options: {
                 bypassOnDebug: true
               }
-            },
-            "sharp-image-loader"
+            }
           ]
         },
         {
@@ -48,9 +51,9 @@ export default function(devMode = false) {
             "file-loader?name=[hash].css",
             "extricate-loader?resolve=\\.js$",
             {loader: "css-loader", options: cssNano},
-            {loader: "postcss-loader", options: postCSS},
+            {loader: "postcss-loader", options: Object.assign({sourceMap: false}, postCSS)},
             "resolve-url-loader",
-            {loader: "sass-loader"}
+            {loader: "sass-loader", options: {sourceMap: false}}
           ]
         },
         {test: /\.json$/, loader: "json-loader"},
@@ -78,7 +81,7 @@ export default function(devMode = false) {
     },
     plugins: [
       new webpack.ProvidePlugin({
-        "fetch": "imports-loader?this=>global!exports?global.fetch!whatwg-fetch"
+        "fetch": "imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch"
       })
     ],
     resolve: {

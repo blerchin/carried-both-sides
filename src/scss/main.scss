@@ -1,13 +1,57 @@
 @import "~foundation-sites/assets/foundation";
 @import "imports/reset";
+@import "utilities";
+@import "colors";
 @import "typography";
 
-h1.red {
-  color: red;
+$barHeight: 57px;
+
+.top-bar {
+  display: flex;
+  height: $barHeight;
+  justify-content: center;
+  padding: 12px;
+  width: 100%;
+  .top-bar-center {
+    display: inline-block;
+  }
 }
-h1.blue {
-  color: blue;
+.bottom-bar {
+  bottom: 0;
+  display: flex;
+  max-height: $barHeight;
+  justify-content: center;
+  padding: 12px;
+  position: fixed;
+  width: 100%;
+  .bottom-bar-center {
+    display: inline-block;
+  }
 }
-h4 {
-  font-size: 80px;
+.home--wrap {
+  height: calc(100vh - 2 * #{$barHeight});
+  margin: 0px $barHeight;
+  overflow: hidden;
+}
+.ampersand-wrap {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+}
+.video-wrap {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  iframe {
+    flex-shrink: 0;
+  }
+}
+[data-time=day] .hide--day {
+  display: none;
+}
+[data-time=night] .hide--night {
+  display:none
 }

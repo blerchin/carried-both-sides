@@ -1,5 +1,11 @@
 @import "fonts/founders-grotesk";
 
-body, h1, h2, h3, h4, h5, h6 {
+body, h1, h2, h3, h4, h5, h6, a {
   font-family: "Founders Grotesk", sans-serif;
+  font-weight: 300;
+  font-size: 22px;
+}
+a:hover {
+  font-weight: 300;
+  border-bottom: 1px solid $taupe;
 }
