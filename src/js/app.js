@@ -5,7 +5,7 @@ import Animation from "./animation";
 import spritesheet from "../data/amphora512x512";
 
 /******* Start Animation *******/
-const hour = (new Date()).getHours();
+const hour = getParams().animLength || (new Date()).getHours();
 const intro = document.getElementById("intro");
 const animEl = document.getElementById("amphoraAnimation");
 const anim = animEl && new Animation(animEl, spritesheet, hour);
@@ -28,13 +28,15 @@ playButton.addEventListener("click", () => {
 });
 
 function onIntroClosed() {
-  try {
-    // on mobile this will throw because it's not chained from a user interaction.
-    player && player.play();
-  } catch (e) {
-    console.warn(e); //eslint-disable-line no-console
+  startVideo();
+}
+
+function startVideo() {
+  const res = player && player.play();
+  res.catch((err) => {
+    console.warn(err); //eslint-disable-line no-console
     playButton.classList.add("open");
-  }
+  });
 }
 
 function sizeIframe() {
@@ -54,9 +56,7 @@ function sizeIframe() {
 function onTimeChanged(isDay) {
   if (!isDay) {
     sizeIframe();
-    player && player.play();
-  } else {
-    player && player.pause();
+    startVideo();
   }
 }
 let times = null;
