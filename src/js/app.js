@@ -1,6 +1,17 @@
 import "../scss/main.scss";
 import SunCalc from "suncalc";
 import getParams from "./getParams";
+import Animation from "./animation";
+import spritesheet from "../data/amphora512x512";
+
+/******* Start Animation *******/
+const hour = (new Date()).getHours();
+const intro = document.getElementById("intro");
+const animEl = document.getElementById("amphoraAnimation");
+const anim = animEl && new Animation(animEl, spritesheet, hour);
+anim.start(() => {
+  intro.classList.remove("open");
+});
 
 /******* Day/Night Logic *******/
 const DEBUG_STATE = getParams().time;
@@ -61,8 +72,8 @@ function applyTime(isDay) {
   document.querySelector("[data-time]").dataset.time = isDay ? "day" : "night";
   onTimeChanged(isDay);
 }
-applyTime(isDay());
 getSunTimes();
+applyTime(isDay());
 setInterval(function() {
   window.dispatchEvent(new Event("applyTime"));
 }, 60 * 1000);

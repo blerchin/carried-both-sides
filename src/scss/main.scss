@@ -16,6 +16,7 @@ $barPadding: $barHeight/2 - 14px;
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 10;
   .top-bar-center {
     display: inline-block;
   }
@@ -42,18 +43,24 @@ $barPadding: $barHeight/2 - 14px;
   }
 }
 .ampersand-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   align-items: center;
   display: flex;
-  height: 100vh;
   justify-content: center;
   padding: $barHeight;
 }
 .video-wrap {
-  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   overflow: hidden;
   padding: $barHeight;
-  position: relative;
-  width: 100vw;
 }
 .video-container {
   align-items: center;
@@ -63,11 +70,52 @@ $barPadding: $barHeight/2 - 14px;
   overflow: hidden;
   width: 100%;
 }
-[data-time=day] .hide--day {
-  display: none;
+.show--day,
+.show--night {
+  visibility: hidden;
 }
-[data-time=night] .hide--night {
-  display:none
+[data-time=day] .show--day {
+  visibility: visible;
+}
+[data-time=night] .show--night {
+  visibility: visible;
+}
+#intro {
+  align-items: center;
+  background-color: white;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left:0;
+  position: fixed;
+  opacity: 0;
+  right: 0;
+  pointer-events: none;
+  top:0;
+  transition: opacity 2s ease-in-out;
+  z-index: 5;
+  &.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+[data-time=night] #intro {
+  background: $soft-black;
+}
+#amphoraAnimation {
+  transform: scale(.5);
+  -webkit-backface-visibility: hidden;
+  .animation-frame {
+    opacity: 0;
+    &.in {
+      opacity: 1;
+      transition: opacity 1500ms ease-in;
+    }
+    &.out {
+      opacity: 0;
+      transition: opacity 700ms ease-out;
+    }
+  }
 }
 #contact-overlay {
   align-items: center;
