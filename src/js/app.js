@@ -10,6 +10,7 @@ const intro = document.getElementById("intro");
 const animEl = document.getElementById("amphoraAnimation");
 const anim = animEl && new Animation(animEl, spritesheet, hour);
 anim.start(() => {
+  onIntroClosed();
   intro.classList.remove("open");
 });
 
@@ -19,6 +20,10 @@ const VIDEO_DIMS = [1280, 720];
 const player = document.querySelector(".video-wrap video");
 player.volume = 0;
 player.loop = true;
+
+function onIntroClosed() {
+  player && player.play();
+}
 
 function sizeIframe() {
   const el = player;

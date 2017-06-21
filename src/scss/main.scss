@@ -102,9 +102,11 @@ $barPadding: $barHeight/2 - 14px;
 [data-time=night] #intro {
   background: $soft-black;
 }
-#amphoraAnimation {
+.animation-wrapper {
   transform: scale(.5);
   -webkit-backface-visibility: hidden;
+}
+#amphoraAnimation {
   .animation-frame {
     opacity: 0;
     &.in {
@@ -131,7 +133,7 @@ $barPadding: $barHeight/2 - 14px;
   top: 0;
   transition: opacity 2000ms ease-in-out;
   width: 100vw;
-  z-index: 15
+  z-index: 15;
   &.open {
     opacity: 1 !important;
     pointer-events: all;
