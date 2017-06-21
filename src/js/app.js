@@ -18,11 +18,23 @@ anim.start(() => {
 const DEBUG_STATE = getParams().time;
 const VIDEO_DIMS = [1280, 720];
 const player = document.querySelector(".video-wrap video");
+const playButton = document.querySelector(".video-wrap .play-button");
 player.volume = 0;
 player.loop = true;
 
+playButton.addEventListener("click", () => {
+  player.play();
+  playButton.classList.remove("open");
+});
+
 function onIntroClosed() {
-  player && player.play();
+  try {
+    // on mobile this will throw because it's not chained from a user interaction.
+    player && player.play();
+  } catch (e) {
+    console.warn(e); //eslint-disable-line no-console
+    playButton.classList.add("open");
+  }
 }
 
 function sizeIframe() {

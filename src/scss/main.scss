@@ -68,7 +68,23 @@ $barPadding: $barHeight/2 - 14px;
   height: 100%;
   justify-content: center;
   overflow: hidden;
+  position: relative;
   width: 100%;
+  .play-button {
+    background-color: $taupe;
+    height: 50px;
+    left: 50%;
+    margin-left: -25px;
+    margin-top: -25px;
+    opacity: 0;
+    position: absolute;
+    right: 50%;
+    width: 50px;
+    z-index: 10;
+    &.open {
+      opacity: 1;
+    }
+  }
 }
 .show--day,
 .show--night {
