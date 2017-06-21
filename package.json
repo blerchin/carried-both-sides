@@ -28,6 +28,7 @@
     "eslint": "^3.1.1",
     "eslint-plugin-import": "^1.11.1",
     "exports-loader": "^0.6.3",
+    "extract-text-webpack-plugin": "2.1.2",
     "extricate-loader": "1.0.0",
     "file-loader": "^0.11.1",
     "foundation-sites": "6.3.1",
@@ -49,10 +50,12 @@
     "responsive-loader": "0.7.0",
     "sass-loader": "6.0.5",
     "sharp-image-loader": "0.1.0-alpha.1",
+    "style-loader": "0.18.2",
     "suncalc": "1.8.0",
     "url-loader": "^0.5.7",
     "webpack": "^2.6.0",
     "webpack-dev-middleware": "1.10.2",
+    "webpack-hot-middleware": "2.18.0",
     "whatwg-fetch": "^1.0.0"
   }
 }
