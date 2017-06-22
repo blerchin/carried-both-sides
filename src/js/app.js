@@ -9,10 +9,12 @@ const hour = getParams().animLength || (new Date()).getHours();
 const intro = document.getElementById("intro");
 const animEl = document.getElementById("amphoraAnimation");
 const anim = animEl && new Animation(animEl, spritesheet, hour);
-anim.start(() => {
-  onIntroClosed();
-  intro.classList.remove("open");
-});
+setTimeout(() => {
+  anim.start(() => {
+    onIntroClosed();
+    intro.classList.remove("open");
+  });
+}, 3000);
 
 /******* Day/Night Logic *******/
 const DEBUG_STATE = getParams().time;

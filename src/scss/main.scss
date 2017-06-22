@@ -119,10 +119,14 @@ $barPadding: $barHeight/2 - 14px;
   background: $soft-black;
 }
 .animation-wrapper {
-  transform: scale(.5);
-  -webkit-backface-visibility: hidden;
+  transform: scale(.75);
 }
 #amphoraAnimation {
+  img {
+    position: absolute;
+    left: 102px;
+    top: 48px;
+  }
   .animation-frame {
     opacity: 0;
     &.in {

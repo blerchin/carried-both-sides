@@ -22,6 +22,7 @@ export default class Animation {
     const frame = this.spritesheet.frames[index];
     el.style.backgroundImage = `url(img/${this.spritesheet.meta.image})`;
     el.style.backgroundPosition = `-${frame.frame.x - 1}px -${frame.frame.y - 1}px`;
+    el.style.backgroundSize = `${this.spritesheet.meta.size.w}px ${this.spritesheet.meta.size.h}px`;
     el.style.position = "absolute";
     if (frame.rotated) {
       el.style.width = `${frame.spriteSourceSize.h}px`;
