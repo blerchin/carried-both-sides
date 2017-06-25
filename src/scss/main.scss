@@ -121,21 +121,24 @@ $barPadding: $barHeight/2 - 14px;
 .animation-wrapper {
   transform: scale(.75);
 }
+.animation-frame {
+  opacity: 0;
+  &.in {
+    opacity: 1;
+  }
+}
 #amphoraAnimation {
   img {
     position: absolute;
-    left: 102px;
-    top: 48px;
+    left: -2px;
+    top: 0;
+    max-height: none;
+    height: 392px;
+    width: 298px;
   }
   .animation-frame {
-    opacity: 0;
     &.in {
-      opacity: 1;
       transition: opacity 1500ms ease-in;
-    }
-    &.out {
-      opacity: 0;
-      transition: opacity 700ms ease-out;
     }
   }
 }

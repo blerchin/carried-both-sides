@@ -1,0 +1,84 @@
+{"frames": [
+
+{
+	"filename": "amphora_at__0000_Layer-8.png",
+	"frame": {"x":1,"y":1,"w":700,"h":278},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":700,"h":278},
+	"sourceSize": {"w":700,"h":278},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "amphora_at__0001_Layer-7.png",
+	"frame": {"x":703,"y":1,"w":700,"h":278},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":700,"h":278},
+	"sourceSize": {"w":700,"h":278},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "amphora_at__0002_Layer-6.png",
+	"frame": {"x":1,"y":281,"w":700,"h":278},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":700,"h":278},
+	"sourceSize": {"w":700,"h":278},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "amphora_at__0003_Layer-5.png",
+	"frame": {"x":703,"y":281,"w":700,"h":278},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":700,"h":278},
+	"sourceSize": {"w":700,"h":278},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "amphora_at__0004_Layer-4.png",
+	"frame": {"x":1405,"y":1,"w":700,"h":278},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":700,"h":278},
+	"sourceSize": {"w":700,"h":278},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "amphora_at__0005_Layer-3.png",
+	"frame": {"x":1685,"y":1,"w":700,"h":278},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":700,"h":278},
+	"sourceSize": {"w":700,"h":278},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "amphora_at__0006_Layer-2.png",
+	"frame": {"x":1,"y":561,"w":700,"h":278},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":700,"h":278},
+	"sourceSize": {"w":700,"h":278},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "amphora_at__0007_Layer-1.png",
+	"frame": {"x":703,"y":561,"w":700,"h":278},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":700,"h":278},
+	"sourceSize": {"w":700,"h":278},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "amphora_at.png",
+	"format": "RGBA8888",
+	"size": {"w":1964,"h":840},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:cab7d461fe3670a5d596e875cd482275:f6286a7de37a4d7768cf73a1caa7b01f:299667cbb3c1db7d5c2852408966f889$"
+}
+}

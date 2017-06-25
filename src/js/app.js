@@ -2,20 +2,24 @@ import "../scss/main.scss";
 import SunCalc from "suncalc";
 import getParams from "./getParams";
 import Animation from "./animation";
-import spritesheet from "../data/amphora512x512";
+import splashSpritesheet from "../data/amphora512x512";
+import ampersandSpritesheet from "../data/amphora_at";
 
-/******* Start Animation *******/
+/******* Create Splash Animation *******/
 const hour = getParams().animLength || (new Date()).getHours();
 const intro = document.getElementById("intro");
 const animEl = document.getElementById("amphoraAnimation");
-const anim = animEl && new Animation(animEl, spritesheet, hour);
+const splash = animEl && new Animation(animEl, splashSpritesheet, hour, {});
+/******* Create ampersand animation *********/
+const ampersandEl = document.getElementById("ampersandAnimation");
+
+const ampAnim = new Animation(ampersandEl, ampersandSpritesheet, null, {loop: true, speed: 1000, wait: 5000});
 setTimeout(() => {
-  anim.start(() => {
+  splash.start(() => {
     onIntroClosed();
     intro.classList.remove("open");
   });
 }, 3000);
-
 /******* Day/Night Logic *******/
 const DEBUG_STATE = getParams().time;
 const VIDEO_DIMS = [1280, 720];
@@ -30,7 +34,11 @@ playButton.addEventListener("click", () => {
 });
 
 function onIntroClosed() {
-  startVideo();
+  if (isDay()) {
+    ampAnim.start();
+  } else {
+    startVideo();
+  }
 }
 
 function startVideo() {
