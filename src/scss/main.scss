@@ -72,7 +72,12 @@ $barPadding: $barHeight/2 - 14px;
   position: relative;
   width: 100%;
   .play-button {
-    background-color: $taupe;
+    background-color: $soft-black;
+    background-image: url("../img/btn--play.svg");
+    background-size: 30px 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 5px;
     height: 50px;
     left: 50%;
     margin-left: -25px;
@@ -203,5 +208,9 @@ $barPadding: $barHeight/2 - 14px;
   }
   .ampersand-wrap .animation-wrapper {
     transform: scale(.45);
+  }
+  .video-wrap {
+    padding-left: 50px;
+    padding-right: 50px;
   }
 }
