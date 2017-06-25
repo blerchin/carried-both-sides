@@ -51,6 +51,7 @@ $barPadding: $barHeight/2 - 14px;
   align-items: center;
   display: flex;
   justify-content: center;
+  overflow: hidden;
   padding: $barHeight;
 }
 .video-wrap {
@@ -146,11 +147,14 @@ $barPadding: $barHeight/2 - 14px;
   align-items: center;
   background: inherit;
   display: flex;
+  flex-direction: column;
   height: 100vh;
   justify-content: center;
   left: 0;
+  overflow-y: auto;
   opacity: 0;
   padding: $barHeight;
+  padding-top: 300px;
   pointer-events: none;
   position: fixed;
   top: 0;
@@ -167,7 +171,7 @@ $barPadding: $barHeight/2 - 14px;
     background-size: contain;
     height: 48px;
     right: $barHeight;
-    position: absolute;
+    position: fixed;
     top: $barHeight;
     width: 48px;
     &:hover {
@@ -177,5 +181,27 @@ $barPadding: $barHeight/2 - 14px;
   }
   .info {
     text-align: center;
+    margin-top: $barHeight;
+    margin-bottom: $barHeight;
+    width: 280px;
+    a {
+      border-bottom: 1px dotted $taupe;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  #contact-overlay {
+    padding: 0;
+    [data-close] {
+      right: 15px;
+      top: 15px;
+    }
+    .info {
+      flex-shrink: 0;
+      height: 100vh;
+    }
+  }
+  .ampersand-wrap .animation-wrapper {
+    transform: scale(.45);
   }
 }

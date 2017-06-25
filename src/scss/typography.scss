@@ -7,10 +7,45 @@ body, h1, h2, h3, h4, h5, h6, a, p {
   letter-spacing: .05em;
   line-height: 27px;
 }
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, p {
   margin-bottom: 27px;
 }
-a:hover {
-  font-weight: 300;
-  border-bottom: 1px solid $taupe;
+
+a {
+  padding-bottom: 3px;
+  &:hover {
+    font-weight: 300;
+    border-bottom: 1px solid $taupe !important;
+  }
+}
+
+.mt {
+  margin-top: 27px;
+}
+.mt\+ {
+  margin-top: 54px
+}
+.mt- {
+  margin-top: 13px;
+}
+.mt-- {
+  margin-top: 6px;
+}
+.mb {
+  margin-bottom: 27px;
+}
+.mb\+ {
+  margin-bottom: 54px
+}
+.mb- {
+  margin-bottom: 13px;
+}
+.mb-- {
+  margin-bottom: 6px;
+}
+.pt {
+  padding-top: 27px;
+}
+.pb {
+  padding-bottom: 27px;
 }
