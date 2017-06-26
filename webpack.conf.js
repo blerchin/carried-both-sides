@@ -27,7 +27,11 @@ export default function(devMode = false) {
       rules: [
         {
           test: /\.((jpe?g)|(png)|(eot)|(woff)|(woff2)|(ttf)|(svg)|(gif)|(mp4)|(webm))(\?v=\d+\.\d+\.\d+)?$/,
-          loader: "file-loader?name=[path][name].[ext]"
+          loader: "url-loader",
+          options: {
+            limit: 8192,
+            name: "[path][name].[ext]"
+          }
         },
         {
           test: /\.json$/,
