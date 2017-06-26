@@ -1,0 +1,53 @@
+#amphoraOutline {
+  display: block !important;
+
+  .st0{fill:none;}
+	.st1{fill:#CE4F02;}
+	.st2{fill:none;stroke:#{$taupe};stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st3{fill:none;stroke:#{$taupe};stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st4{fill:none;stroke:#{$taupe};stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st5{fill:none;stroke:#{$taupe};stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st6{fill:none;stroke:#{$taupe};stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st7{fill:none;stroke:#{$taupe};stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st3, .st4, .st5, .st6, .st7 {
+	  stroke-dasharray: 1000;
+	  stroke-dashoffset: 1000;
+	  -webkit-animation: dash 5s linear forwards;
+	  -moz-animation: dash 5s linear forwards;
+	  animation: dash 5s linear forwards;
+	}
+	.st3, .st5 {
+		-webkit-moz-animation-delay: .5s;
+		-moz-animation-delay: .5s;
+		animation-delay: .5s;
+	}
+	.st4, .st6 {
+		-webkit-animation-delay: 2.4s;
+		-moz-animation-delay: 2.4s;
+		animation-delay: 2.4s;
+	}
+	.st7 {
+		-webkit-animation-delay: 2.5s;
+		-moz-animation-delay: 2.5s;
+		animation-delay: 2.5s;
+	}
+	.st2 {
+	  stroke-dasharray: 1000;
+	  stroke-dashoffset: 1000;
+	  -webkit-animation: dash1 3s linear forwards;
+	  -moz-animation: dash1 3s linear forwards;
+	  animation: dash1 3s linear forwards;
+	}
+	@keyframes dash1 {
+	  to {
+	    stroke-dashoffset: 0;
+	    stroke-dashoffset: 0;
+	  }
+	}
+
+	@keyframes dash {
+	  to {
+	    stroke-dashoffset: 0;
+	  }
+	}
+}

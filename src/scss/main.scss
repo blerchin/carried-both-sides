@@ -6,6 +6,8 @@
 @import "utilities";
 @import "typography";
 
+@import "amphora-outline";
+
 $barHeight: 80px;
 $barPadding: $barHeight/2 - 14px;
 
@@ -139,7 +141,7 @@ $barPadding: $barHeight/2 - 14px;
   }
 }
 #amphoraAnimation {
-  img {
+  svg {
     position: absolute;
     left: -2px;
     top: 0;
