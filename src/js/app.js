@@ -70,7 +70,6 @@ function sizeIframe() {
 function onTimeChanged(isDay) {
   if (!isDay) {
     sizeIframe();
-    startVideo();
   }
 }
 let times = null;
