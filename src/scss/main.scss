@@ -37,17 +37,17 @@ $barPadding: $barHeight/2 - 14px;
 }
 .bg--time {
   background: white;
-  &[data-time=night] {
-    background: $soft-black;
-  }
-  [data-time=night] {
+  transition: background 5s ease-in-out;
+}
+[data-time=night] {
+  &.bg--time,
+  .bg--time {
     background: $soft-black;
   }
 }
 .home--wrap {
   height: 100vh;
   overflow: hidden;
-  transition: background 5s ease-in-out;
   background: white;
 }
 .ampersand-wrap {

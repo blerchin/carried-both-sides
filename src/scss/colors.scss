@@ -4,10 +4,19 @@ $taupe: #ce4f02;
 .color--taupe a:hover {
   color: $taupe;
 }
-$taupe-muted: lighten($taupe, 50%);
-.color--taupe-muted,
-.color--taupe-muted a,
-.color--taupe-muted a:hover {
-  color: $taupe-muted;
+$taupe-light: lighten($taupe, 50%);
+$taupe-desaturated: desaturate($taupe, 60%);
+
+.color--taupe a {
+  border-bottom: 1px solid $taupe-light;
+  &:hover {
+    border-bottom-color: $taupe !important;
+  }
+}
+[data-time=night] .color--taupe a {
+  border-color: $taupe-desaturated;
+  &:hover {
+    border-color: $taupe !important;
+  }
 }
 $soft-black: #181b20;
