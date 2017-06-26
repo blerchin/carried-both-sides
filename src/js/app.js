@@ -113,12 +113,15 @@ window.addEventListener("resize", sizeIframe);
 
 /************ Contact Overlay ************/
 const toggle = document.querySelector("[data-toggle]");
+const close = document.querySelector("a[data-close]");
 toggle.addEventListener("click", (e) => {
   e.preventDefault();
   document.getElementById(toggle.dataset.toggle).classList.add("open");
+  close.classList.add("open");
 });
-const close = document.querySelector("a[data-close=parent]");
 close.addEventListener("click", (e) => {
   e.preventDefault();
-  close.parentNode.classList.remove("open");
+  const node = document.getElementById(close.dataset.close);
+  node.classList.remove("open");
+  close.classList.remove("open");
 });
