@@ -4,4 +4,10 @@ $taupe: #ce4f02;
 .color--taupe a:hover {
   color: $taupe;
 }
+$taupe-muted: lighten($taupe, 50%);
+.color--taupe-muted,
+.color--taupe-muted a,
+.color--taupe-muted a:hover {
+  color: $taupe-muted;
+}
 $soft-black: #181b20;

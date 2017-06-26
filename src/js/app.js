@@ -5,6 +5,10 @@ import Animation from "./animation";
 import splashSpritesheet from "../data/amphora512x512";
 import ampersandSpritesheet from "../data/amphora_at";
 
+if (getParams().openContact) {
+  document.getElementById("contact-overlay").classList.add("open");
+}
+
 /******* Create Splash Animation *******/
 const hour = getParams().animLength || (new Date()).getHours();
 const intro = document.getElementById("intro");

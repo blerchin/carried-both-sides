@@ -1,7 +1,9 @@
 @import "~foundation-sites/assets/foundation";
+@include foundation-flex-classes;
+@include foundation-flex-grid;
 @import "imports/reset";
-@import "utilities";
 @import "colors";
+@import "utilities";
 @import "typography";
 
 $barHeight: 80px;
@@ -33,14 +35,20 @@ $barPadding: $barHeight/2 - 14px;
     display: inline-block;
   }
 }
+.bg--time {
+  background: white;
+  &[data-time=night] {
+    background: $soft-black;
+  }
+  [data-time=night] {
+    background: $soft-black;
+  }
+}
 .home--wrap {
   height: 100vh;
   overflow: hidden;
   transition: background 5s ease-in-out;
   background: white;
-  &[data-time=night] {
-    background: $soft-black;
-  }
 }
 .ampersand-wrap {
   position: fixed;
@@ -158,14 +166,13 @@ $barPadding: $barHeight/2 - 14px;
   left: 0;
   overflow-y: auto;
   opacity: 0;
-  padding: $barHeight;
-  padding-top: 300px;
+  padding: 0;
   pointer-events: none;
   position: fixed;
   top: 0;
   transition: opacity 2000ms ease-in-out;
   width: 100vw;
-  z-index: 15;
+  z-index: 5;
   &.open {
     opacity: 1 !important;
     pointer-events: all;
@@ -174,6 +181,7 @@ $barPadding: $barHeight/2 - 14px;
     background-image: url("~img/btn--close.svg");
     background-position: center;
     background-size: contain;
+    border-bottom: 0px;
     height: 48px;
     right: $barHeight;
     position: fixed;
@@ -186,17 +194,10 @@ $barPadding: $barHeight/2 - 14px;
   }
   .info {
     text-align: center;
-    margin-top: $barHeight;
-    margin-bottom: $barHeight;
-    width: 280px;
-    a {
-      border-bottom: 1px dotted $taupe;
-    }
   }
 }
 @media screen and (max-width: 768px) {
   #contact-overlay {
-    padding: 0;
     [data-close] {
       right: 15px;
       top: 15px;
@@ -204,6 +205,9 @@ $barPadding: $barHeight/2 - 14px;
     .info {
       flex-shrink: 0;
       height: 100vh;
+      position: relative;
+      padding-top: $barHeight;
+      padding-bottom: $barHeight;
     }
   }
   .ampersand-wrap .animation-wrapper {
