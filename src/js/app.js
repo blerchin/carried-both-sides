@@ -10,20 +10,25 @@ if (getParams().openContact) {
 }
 
 /******* Create Splash Animation *******/
-const hour = getParams().animLength || (new Date()).getHours();
-const intro = document.getElementById("intro");
-const animEl = document.getElementById("amphoraAnimation");
-const splash = animEl && new Animation(animEl, splashSpritesheet, hour, {});
+let splashStarted = false;
+function startSplash() {
+  splashStarted = true;
+  const hour = getParams().animLength || (new Date()).getHours();
+  const intro = document.getElementById("intro");
+  const animEl = document.getElementById("amphoraAnimation");
+  const spriteImage = `amphora-fill-sprites--${isDay() ? "day" : "night"}.svg`;
+  const splash = animEl && new Animation(animEl, splashSpritesheet, hour, {spriteImage});
+  setTimeout(() => {
+    splash.start(() => {
+      onIntroClosed();
+      intro.classList.remove("open");
+    });
+  }, 3000);
+}
 /******* Create ampersand animation *********/
 const ampersandEl = document.getElementById("ampersandAnimation");
 
 const ampAnim = new Animation(ampersandEl, ampersandSpritesheet, null, {loop: true, speed: 1000, wait: 5000});
-setTimeout(() => {
-  splash.start(() => {
-    onIntroClosed();
-    intro.classList.remove("open");
-  });
-}, 3000);
 /******* Day/Night Logic *******/
 const DEBUG_STATE = getParams().time;
 const VIDEO_DIMS = [1280, 720];
@@ -71,6 +76,7 @@ function onTimeChanged(isDay) {
   if (!isDay) {
     sizeIframe();
   }
+  splashStarted || startSplash();
 }
 let times = null;
 let timesErr = null;
@@ -103,7 +109,6 @@ function applyTime(isDay) {
   onTimeChanged(isDay);
 }
 getSunTimes();
-applyTime(isDay());
 setInterval(function() {
   window.dispatchEvent(new Event("applyTime"));
 }, 60 * 1000);

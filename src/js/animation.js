@@ -1,10 +1,11 @@
 export default class Animation {
-  constructor(container, spritesheet, frameCount, {speed = 1000, loop = false, wait = 0}) {
+  constructor(container, spritesheet, frameCount, {speed = 1000, loop = false, wait = 0, spriteImage = null}) {
     this.el = container;
     this.spritesheet = spritesheet;
     this.speed = speed;
     this.loop = loop;
     this.wait = wait;
+    this.spriteImage = spriteImage || this.spritesheet.meta.image;
     if (!frameCount) {
       frameCount = this.spritesheet.frames.length;
     }
@@ -24,7 +25,7 @@ export default class Animation {
     el.dataset.frameIndex = index;
     el.classList.add("animation-frame");
     const frame = this.spritesheet.frames[index];
-    el.style.backgroundImage = `url(img/${this.spritesheet.meta.image})`;
+    el.style.backgroundImage = `url(img/${this.spriteImage})`;
     el.style.backgroundPosition = `-${frame.frame.x - 1}px -${frame.frame.y - 1}px`;
     el.style.backgroundSize = `${this.spritesheet.meta.size.w}px ${this.spritesheet.meta.size.h}px`;
     el.style.position = "absolute";
