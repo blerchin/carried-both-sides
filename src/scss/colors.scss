@@ -5,13 +5,6 @@ $taupe: #ce4f02;
   color: $taupe;
 }
 
-.color--taupe a {
-  border: 0;
-  border-bottom: 1px dashed $taupe;
-  &:hover {
-    border-style: solid !important;
-  }
-}
 $soft-black: #181b20;
 $dark-black: #22252A;
 $light-gray: #F5F5F5;

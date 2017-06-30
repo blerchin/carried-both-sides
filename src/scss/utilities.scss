@@ -86,6 +86,14 @@ $spacing: (
 .bo--dotted {
   border-style: dotted;
 }
+@each $slug, $name in $directions {
+  .bo-#{$slug}--dotted-lg {
+    border-style: dotted;
+    border-image: url(~img/border--dotted-lg.svg) 33% round;
+    border-width: 0;
+    border-#{$name}-width: 4px;
+  }
+}
 .bo--dashed {
   border-style: dashed;
 }
