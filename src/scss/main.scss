@@ -161,7 +161,6 @@ $barPadding: $barHeight/2 - 14px;
   flex-direction: column;
   justify-content: center;
   left: 0;
-  margin-top: $barHeight;
   overflow-y: auto;
   opacity: 0;
   padding: 0;
@@ -171,7 +170,7 @@ $barPadding: $barHeight/2 - 14px;
   bottom: 0;
   transition: opacity 2000ms ease-in-out;
   width: 100vw;
-  z-index: 5;
+  z-index: 10;
   &.open {
     opacity: 1 !important;
     pointer-events: all;
