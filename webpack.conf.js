@@ -48,7 +48,7 @@ export default function(devMode = false) {
     },
     context: path.join(__dirname, "src"),
     entry: function() {
-      const hot = devMode ? ["webpack-hot-middleware/client"] : [];
+      const hot = devMode ? ["webpack-hot-middleware/client?reload=true"] : [];
       const js = ["./js/app.js"];
       const img = glob.sync("./img/*", {
         absolute: true, // Receive absolute paths for matched files.

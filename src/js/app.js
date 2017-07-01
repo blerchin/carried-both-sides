@@ -28,7 +28,7 @@ function startSplash() {
 /******* Create ampersand animation *********/
 const ampersandEl = document.getElementById("ampersandAnimation");
 
-const ampAnim = new Animation(ampersandEl, ampersandSpritesheet, null, {loop: true, speed: 1000, wait: 5000});
+const ampAnim = new Animation(ampersandEl, ampersandSpritesheet, null, {loop: true, speed: 150, wait: 3000});
 /******* Day/Night Logic *******/
 const DEBUG_STATE = getParams().time;
 const VIDEO_DIMS = [1280, 720];

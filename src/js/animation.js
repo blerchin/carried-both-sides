@@ -4,6 +4,7 @@ export default class Animation {
     this.spritesheet = spritesheet;
     this.speed = speed;
     this.loop = loop;
+    this.forward = true;
     this.wait = wait;
     this.spriteImage = spriteImage || this.spritesheet.meta.image;
     if (!frameCount) {
@@ -50,11 +51,11 @@ export default class Animation {
     if (done) {
       this.done = done;
     }
-    this.cur = 0;
+    this.cur = this.forward ? 0 : this.frames.length - 1;
     for (let i = 0; i < this.frames.length; i++) {
       this.frames[i].classList.remove("in");
     }
-    this.frames[0].classList.add("in");
+    this.frames[this.cur].classList.add("in");
     this.interval = window.setInterval(this.tick.bind(this), this.speed);
   }
   stop() {
@@ -64,6 +65,7 @@ export default class Animation {
     this.stop();
     if (this.loop) {
       window.setTimeout(() => {
+        this.forward = !this.forward;
         this.start();
       }, this.wait);
     } else {
@@ -71,8 +73,12 @@ export default class Animation {
     }
   }
   tick() {
-    if (this.cur < this.frames.length - 1) {
-      this.frames[++this.cur].classList.add("in");
+    this.cur += this.forward ? 1 : -1;
+    if (this.cur < this.frames.length && this.cur > 0) {
+      if (!this.forwards && this.cur < this.frames.length - 1) {
+        this.frames[this.cur + 1].classList.remove("in");
+      }
+      this.frames[this.cur].classList.add("in");
     } else {
       this.loopEnd();
     }
