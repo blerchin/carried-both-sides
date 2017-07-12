@@ -2,7 +2,7 @@ sudo: required
 services:
   - docker
 script:
-  - docker build -t consec-www
+  - ./run build 
   - ./run dist
 deploy:
   provider: pages
