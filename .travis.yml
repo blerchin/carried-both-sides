@@ -2,9 +2,10 @@ sudo: required
 services:
   - docker
 script:
-  - ./run build 
+  - ./run build
   - ./run dist
 deploy:
+  fqdn: carriedonbothsides.com
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN

@@ -2,7 +2,7 @@ FROM debian:jessie
 
 # Install node sources
 RUN apt-get -qq update \
-  && apt-get install -y curl
+  && DEBIAN_FRONTEND=noninteractive apt-get install -y curl
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash
 
 # Install node and pygments (for syntax highlighting)
@@ -22,7 +22,7 @@ RUN mkdir /usr/src/app
 WORKDIR /usr/src/app
 
 COPY . /usr/src/app
-RUN npm install --verbose
+RUN npm install
 EXPOSE 3000
 
 CMD [ "npm", "start"]
