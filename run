@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+case $1 in
+  "build" )
+    docker build -f Dockerfile -t carried-both-sides .
+    ;;
+
+  "dev" )
+    docker run --rm -p 3000:3000 -v ${PWD}/site:/usr/src/app/site -v ${PWD}/src:/usr/src/app/src carried-both-sides
+    ;;
+
+  "lint" )
+    docker run --rm -p 3000:3000 -v ${PWD}/site:/usr/src/app/site -v ${PWD}/src:/usr/src/app/src -v ${PWD}/dist:/usr/src/app/dist carried-both-sides npm run lint
+    ;;
+
+  "dist" )
+    docker run --rm -p 3000:3000 -v ${PWD}/site:/usr/src/app/site -v ${PWD}/src:/usr/src/app/src -v ${PWD}/dist:/usr/src/app/dist carried-both-sides npm run build
+    ;;
+
+  * )
+    echo "Usage: ./run (build | dev | dist)"
+    ;;
+esac
