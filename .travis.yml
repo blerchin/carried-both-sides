@@ -3,6 +3,7 @@ services:
   - docker
 script:
   - ./run build
+  - ./run lint
   - ./run dist
 deploy:
   fqdn: carriedonbothsides.com
