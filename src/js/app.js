@@ -46,7 +46,7 @@ function onIntroClosed() {
   if (isDay()) {
     ampAnim.start();
   } else {
-    startVideo();
+    setTimeout(startVideo, 1000);
   }
 }
 

@@ -103,11 +103,28 @@ $barPadding: $barHeight/2 - 14px;
     }
   }
 }
-[data-time=night] .show--day {
-  display: none;
+.show--day,
+.show--night {
+  visibility: hidden;
+
 }
-[data-time=day] .show--night {
-  display: none;
+[data-time=night] {
+  .show--night {
+    visibility: visible;
+  }
+  .show--day {
+    display: none;
+    visibility: visible;
+  }
+}
+[data-time=day] {
+  .show--day {
+    visibility: visible;
+  }
+  .show--night {
+    display: none;
+    visibility: visible;
+  }
 }
 #intro {
   align-items: center;
