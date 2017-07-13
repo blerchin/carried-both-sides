@@ -34,7 +34,7 @@ const DEBUG_STATE = getParams().time;
 const VIDEO_DIMS = [1280, 720];
 const player = document.querySelector(".video-wrap video");
 const playButton = document.querySelector(".video-wrap .play-button");
-player.volume = 0;
+player.volume = 1;
 player.loop = true;
 
 playButton.addEventListener("click", () => {

@@ -18,6 +18,6 @@ case $1 in
     ;;
 
   * )
-    echo "Usage: ./run (build | dev | dist)"
+    echo "Usage: ./run (build | dev | lint | dist)"
     ;;
 esac

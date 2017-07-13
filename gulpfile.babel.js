@@ -34,7 +34,15 @@ gulp.task("js", (cb) => {
   });
 });
 
-gulp.task("server", ["clean", "hugo"], () => {
+gulp.task("serve-prod", ["clean", "hugo", "js"], () => {
+  browserSync.init({
+    server: {
+      baseDir: "./dist",
+    }
+  });
+});
+
+gulp.task("serve-dev", ["clean", "hugo"], () => {
   const compiler = webpack(webpackConfig(true));
   const webpackMiddleware = webpackDevMiddleware(compiler, {
     publicPath: "/",
