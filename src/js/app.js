@@ -4,6 +4,7 @@ import getParams from "./getParams";
 import Animation from "./animation";
 import splashSpritesheet from "../data/amphora512x512";
 import ampersandSpritesheet from "../data/amphora_at";
+import mobileCheck from "./mobileCheck";
 
 if (getParams().openContact) {
   document.getElementById("contact-overlay").classList.add("open");
@@ -35,7 +36,15 @@ const VIDEO_DIMS = [1280, 720];
 const player = document.querySelector(".video-wrap video");
 const playButton = document.querySelector(".video-wrap .play-button");
 player.volume = 1;
+
 player.loop = true;
+if (!mobileCheck()) {
+  player.muted = false;
+}
+player.addEventListener("click", () => {
+  player.muted = false;
+  player.play();
+});
 
 playButton.addEventListener("click", () => {
   player.play();
