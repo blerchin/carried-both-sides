@@ -50,7 +50,7 @@ export default function(devMode = false) {
     entry: function() {
       const hot = devMode ? ["webpack-hot-middleware/client?reload=true"] : [];
       const js = ["./js/app.js"];
-      const img = glob.sync("./img/*", {
+      const img = glob.sync("./img/**/*", {
         absolute: true, // Receive absolute paths for matched files.
         cwd: this.context, // The current working directory in which to search.
         matchBase: true, // Perform a basename-only match.

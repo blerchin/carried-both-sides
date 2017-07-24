@@ -1,0 +1,8 @@
+{{- $loc := . -}}
+<div class="gallery row">
+  {{ range seq 8 }}
+    <div class="gallery-item small-12 medium-6 columns">
+      <img src="{{ $loc }}/{{ . }}.jpg" />
+    </div>
+  {{ end }}
+</div>

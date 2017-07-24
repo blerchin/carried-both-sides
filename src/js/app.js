@@ -1,5 +1,6 @@
 import "../scss/main.scss";
 import SunCalc from "suncalc";
+import Masonry from "masonry-layout";
 import getParams from "./getParams";
 import Animation from "./animation";
 import splashSpritesheet from "../data/amphora512x512";
@@ -9,6 +10,8 @@ import mobileCheck from "./mobileCheck";
 if (getParams().openContact) {
   document.getElementById("contact-overlay").classList.add("open");
 }
+
+var imageGrid = new Masonry(".gallery");
 
 /******* Create Splash Animation *******/
 let splashStarted = false;
@@ -86,6 +89,7 @@ function onTimeChanged(isDay) {
     sizeIframe();
   }
   splashStarted || startSplash();
+  imageGrid.layout();
 }
 let times = null;
 let timesErr = null;

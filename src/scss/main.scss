@@ -26,13 +26,26 @@ $barPadding: $barHeight/2 - 14px;
     display: inline-block;
   }
 }
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+  position: absolute;
+  top: calc(100vh - #{$barHeight});
+  width: 100vw;
+}
+.gallery {
+  .gallery-item {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+[data-time="day"] .footer {
+  background-color: white;
+}
 .bottom-bar {
-  background: transparent;
-  bottom: 0;
   display: flex;
   justify-content: center;
   padding: $barPadding;
-  position: fixed;
   width: 100%;
   .bottom-bar-center {
     display: inline-block;
