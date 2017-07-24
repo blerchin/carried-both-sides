@@ -1,6 +1,7 @@
 import "../scss/main.scss";
 import SunCalc from "suncalc";
 import Masonry from "masonry-layout";
+import imagesLoaded from "imagesloaded";
 import getParams from "./getParams";
 import Animation from "./animation";
 import splashSpritesheet from "../data/amphora512x512";
@@ -11,7 +12,11 @@ if (getParams().openContact) {
   document.getElementById("contact-overlay").classList.add("open");
 }
 
-var imageGrid = new Masonry(".gallery");
+var gallery = document.querySelector(".gallery");
+var imageGrid = new Masonry(gallery);
+imagesLoaded(gallery, () =>  {
+  imageGrid.layout();
+});
 
 /******* Create Splash Animation *******/
 let splashStarted = false;
