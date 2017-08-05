@@ -1,6 +1,7 @@
-{{- $loc := . -}}
+{{- $loc := .Loc -}}
+{{- $count := .Count}}
 <div class="gallery row">
-  {{ range seq 11 }}
+  {{ range seq $count }}
     <div class="gallery-item small-12 medium-6 columns">
       <img src="{{ $loc }}/{{ . }}.jpg" />
     </div>
